@@ -1,0 +1,42 @@
+def remove_symmetries(str_dict):
+    for i in str_dict:
+        arr = string_to_arr(i)
+        ##Insert translations wale symmetries
+        #sdkfjgslkfdjglska#
+
+        #Check 90 degree rotation symmetry
+        name = ' '.join(map(str, rot90_anticlock(arr).flatten())).replace(' ','')
+        if name in str_dict:
+            del str_dict[name]
+
+        #Check 180 degree rotation symmetry
+        name = ' '.join(map(str, rot180_anticlock(arr).flatten())).replace(' ','')
+        if name in str_dict:
+            del str_dict[name]
+
+        #Check 270 degree rotation symmetry
+        name = ' '.join(map(str, rot270_anticlock(arr).flatten())).replace(' ','')
+        if name in str_dict:
+            del str_dict[name]
+
+        #Check horizontal flip symmetry
+        name = ' '.join(map(str, hor_flip(arr).flatten())).replace(' ','')
+        if name in str_dict:
+            del str_dict[name]
+
+        #Check vertical flip symmetry
+        name = ' '.join(map(str, ver_flip(arr).flatten())).replace(' ','')
+        if name in str_dict:
+            del str_dict[name]
+
+        #Check secondary diagonal flip symmetry
+        name = ' '.join(map(str, flip_secondary_diag(arr).flatten())).replace(' ','')
+        if name in str_dict:
+            del str_dict[name]
+
+        #Check primary diagonal flip symmetry
+        name = ' '.join(map(str, flip_primary_diag(arr).flatten())).replace(' ','')
+        if name in str_dict:
+            del str_dict[name]    
+
+    return str_dict
