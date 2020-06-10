@@ -7,7 +7,7 @@ In this text, we develop implement a Monte Carlo algorithm to study thermodynami
 <Insert Link>
 
 ### Long Loop Algorithm Demonstration
-![Long loop gif](slower_long_loop.gif.gif)
+![Long loop gif](/media/slower_long_loop.gif)
 
 ## Prerequisites
 
