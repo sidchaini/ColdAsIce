@@ -21,15 +21,6 @@ https://github.com/AKnightWing/ColdAsIce
 [MIT](https://choosealicense.com/licenses/mit/)
 
 ## Authors
-Tanmay Bhore
-
-Siddharth Chaini
-
-Siddharth Bachoti
-
-Vipin Khade
-
-Vinay Patil
-
+Tanmay Bhore, Siddharth Chaini, Siddharth Bachoti, Vipin Khade, Vinay Patil
 
 IISER Bhopal
