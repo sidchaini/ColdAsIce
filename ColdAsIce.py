@@ -37,7 +37,6 @@ kb = 1
 
 def initialise_state(N): #N is the grid dimension (in the above example, N=4)
     '''
-    Author: Siddharth Bachoti
     A function to initialise a possible state of NxN atoms. Assigns 1 to all bonds.
     '''
     grid = np.ones((N,N,2),dtype=int)
@@ -46,7 +45,6 @@ def initialise_state(N): #N is the grid dimension (in the above example, N=4)
 
 def plot_vector(p1,p2,num):
     '''
-    Author: Siddharth Chaini
     A function to plot any two vectors on matplotlib via arrows
     '''
     if num>4:
@@ -76,7 +74,6 @@ def plot_vector(p1,p2,num):
 
 def get_coord_list(arr):
     '''
-    Author: Siddharth Chaini
     A function to get the coordinates of all atoms. Used for visualising our model.
     '''
     coord_list=[]
@@ -93,7 +90,6 @@ def get_coord_list(arr):
 
 def visualise_2d_model(arr,savefig=False,savename=".temp",show=True):
     '''
-    Author: Siddharth Chaini
     Wrapper function to visualise a 2D ice model when input an array on dim (n,n,2)
     '''
     num = len(arr)
@@ -157,8 +153,7 @@ def visualise_2d_model(arr,savefig=False,savename=".temp",show=True):
 
 def create_6_vertex_configs():
     '''
-	Author: Siddharth Chaini
-	A function to create the 6 images for the types of single vertex configs in the report.
+    A function to create the 6 images for the types of single vertex configs in the report.
     '''
     configlist = [(1,1,-1,-1),
             (-1,-1,1,1),
@@ -198,7 +193,6 @@ def create_6_vertex_configs():
 
 def check_config(arr):
     '''
-    Author: Tanmay Bhore
     Function to check if given state follows the ice rules.
     '''
     flag=True
@@ -224,7 +218,6 @@ def check_config(arr):
 
 def long_loop(arr2, verbose=False):
     '''
-    Author: Team ℏ
     Implementation of the long loop algorithm
     '''
     arr = copy.deepcopy(arr2)
@@ -311,7 +304,6 @@ def long_loop(arr2, verbose=False):
 
 def count_states(num,error_threshold,return_dict = False,verbose=False):
     '''
-    Author: Team ℏ
     Function to count total possible states for num x num atoms.
     '''
     if not (error_threshold<=100 and error_threshold>0):
@@ -345,7 +337,6 @@ def count_states(num,error_threshold,return_dict = False,verbose=False):
 
 def state2to4(arr):
     '''
-    Author: Siddharth Chaini
     Convert an (n,n,2) array to an (n,n,4) array.
     '''
     fourstatearr=np.zeros((arr.shape[0],arr.shape[1],4))
@@ -367,7 +358,6 @@ def state2to4(arr):
 
 def rot90_anticlock(arr2):
     '''
-    Author: Siddharth Chaini
     Function to generate 90deg anticlockwise rotation
     Up becomes left, left becomes down, down becomes right, right becomes up.
     '''
@@ -417,7 +407,6 @@ def rot180_anticlock(arr2):
 
 def rot270_anticlock(arr2):
     '''
-    Author: Siddharth Chaini
     Function to generate 270deg anticlockwise rotation
 	Up becomes right, left becomes up, down becomes left, right becomes down
     '''
@@ -442,7 +431,6 @@ def rot270_anticlock(arr2):
 
 def hor_flip(arr2):
     '''
-    Author: Siddharth Chaini and Vipin Khade
     Function to generate a horizontally flipped configuration
     '''
     arr = np.flip(arr2,1)
@@ -462,7 +450,6 @@ def hor_flip(arr2):
 
 def ver_flip(arr2):
     '''
-    Author: Siddharth Chaini and Vipin Khade
     Function to generate a vertically flipped configuration
     '''
     arr = np.flip(arr2,0)
@@ -482,7 +469,6 @@ def ver_flip(arr2):
 
 def flip_secondary_diag(arr2):
     '''
-    Author: Siddharth Bachoti
     Function to generate a secondary diagonal flipped configuration.
     '''
     arr = copy.deepcopy(arr2)
@@ -496,7 +482,6 @@ def flip_secondary_diag(arr2):
 
 def flip_primary_diag(arr2):
     '''
-    Author: Siddharth Bachoti
     Function to generate a primary diagonal flipped configuration.
     '''
     arr = copy.deepcopy(arr2)
@@ -506,7 +491,6 @@ def flip_primary_diag(arr2):
 
 def get_all_column_translations(arr):
     '''
-    Author: Siddharth Chaini
     Return a list of arrays containing all possible column translations.
     '''
     result_arr_list=[]
@@ -520,7 +504,6 @@ def get_all_column_translations(arr):
 
 def get_all_row_translations(arr):
     '''
-    Author: Siddharth Chaini
     Return a list of arrays containing all possible column translations.
     '''
     result_arr_list=[]
@@ -534,8 +517,7 @@ def get_all_row_translations(arr):
 
 def arr_to_string(arr2):
     '''
-    Author: Siddharth Chaini
-    Convert a state array to a unique string.
+=   Convert a state array to a unique string.
     '''
     arr = copy.deepcopy(arr2)
     name = ' '.join(map(str, arr.flatten())).replace(' ','')
@@ -543,7 +525,6 @@ def arr_to_string(arr2):
 
 def string_to_arr(s):
     '''
-    Author: Siddharth Chaini
     Convert the above string back to an array.
     '''
     replaced_str = s.replace("-1","0")
@@ -562,7 +543,6 @@ def string_to_arr(s):
 
 def remove_symmetries(all_names, verbose=False):
     '''
-    Author: Team ℏ
     Function to remove all symmetries for a given list of state strings (names)
     '''
     assert type(all_names)==list
@@ -640,7 +620,6 @@ def remove_symmetries(all_names, verbose=False):
 
 def calculate_energy(arr,eps):
     '''
-    Author: Vipin Khade
     A function to calculate the energy for a given state array and epsilon.
     '''
     N = len(arr)
@@ -659,7 +638,6 @@ def calculate_energy(arr,eps):
 
 def calculate_atom_config(arr):
     '''
-    Author: Siddharth Chaini
     A function to represent all atoms as a combination of the 6 possible vertex configurations.
     '''
     tupdict = {
@@ -691,7 +669,6 @@ def calculate_atom_config(arr):
 
 def visualise_atom_config_with_bonds(arr,savefig=False,savename=".temp",show=True):
     '''
-    Author: Siddharth Chaini
     A function to visualise the state array as a combination of the 6 possible vertex configurations. 
     '''
     num = len(arr)
@@ -762,7 +739,6 @@ def visualise_atom_config_with_bonds(arr,savefig=False,savename=".temp",show=Tru
 
 def visualise_final_state(arr,title="",savefig=False,savename=".temp",show=True):
     '''
-    Author: Siddharth Chaini and Tanmay Bhore
     A function to generate a checkerboard plot (as given in the report) for a given state array.
     '''
 
@@ -801,7 +777,6 @@ def visualise_final_state(arr,title="",savefig=False,savename=".temp",show=True)
 
 def metropolis_move(arr,temp,verbose = False):
     '''
-    Author: Tanmay Bhore
     A function to make the metropolis move as part of the F model.
     Dependencies: Uses energy(arr) function
     and long_loop(arr) function.
@@ -825,7 +800,6 @@ def metropolis_move(arr,temp,verbose = False):
 
 def calculate_polarization(arr):
     '''
-    Author: Siddharth Bachoti
     A function to calculate the polarization for a given state array.
     '''
     vert = 0
@@ -844,7 +818,6 @@ def calculate_polarization(arr):
 
 def equilibrate(n,temp,breaking_iters=3000,return_polarlist=False,verbose=False):
     '''
-    Author: Team ℏ
     A function to equilibrate any array of size n x n, i.e use the metropolis move till it has plateaued.
     '''
     assert temp>=0
@@ -866,7 +839,6 @@ def equilibrate(n,temp,breaking_iters=3000,return_polarlist=False,verbose=False)
 
 def equilibrate_existing(arr2,temp,breaking_iters=3000,return_polarlist=False,verbose=False):
     '''
-    Author: Team ℏ
     A function to equilibrate a given state array, i.e use the metropolis move till it has plateaued.
     '''
     assert temp>=0
@@ -889,7 +861,6 @@ def equilibrate_existing(arr2,temp,breaking_iters=3000,return_polarlist=False,ve
 
 def get_sp_heat_and_energy(n,temp,breaking_iters=3000):
     '''
-    Author: Team ℏ
     A function to calculate the specific heat, energy and polar.
     '''
     arr = equilibrate(n,temp,breaking_iters=breaking_iters)
@@ -1013,7 +984,6 @@ def get_sp_heat_and_energy(n,temp,breaking_iters=3000):
 
 def save_equilibration_snapshots(n,temp_min=0.001,temp_max=15,n_points=50,verbose=False):
 	'''
-	Author: Siddharth Chaini
 	A function to save the equilibration snapshots as pngs.
 	'''
 	temp_arr=np.linspace(temp_min,temp_max,n_points)
@@ -1023,6 +993,29 @@ def save_equilibration_snapshots(n,temp_min=0.001,temp_max=15,n_points=50,verbos
 		arr2 = equilibrate(n,temp=temp)        
 		title=f"T = {temp} K"
 		visualise_final_state(arr2,title=title,savefig=True,savename=title)
+
+def generate_gif(input_dir,output_dir,framerate):
+    '''
+    A function that creates a GIF showing the equilibriation of a lattice as the temperature is decreased.
+    It uses the images generated by the function 'save_equilibriation_snapshots()'.
+    '''
+    frames = []
+    dirname = input_dir
+    temperatures = []
+    for i in os.listdir(dirname):
+        t = (i.split('T = '))[1].split(' K.png')[0]
+        temperatures.append(float(t))
+    temperatures.sort(reverse=True)#Make reverse flase in order to show the animation from 0->15K
+
+    filenames = []
+    for j in temperatures:
+        filenames.append(dirname + '/' + 'T = ' + str(j) + ' K.png')
+
+    for i in filenames:
+        frames.append(Image.open(i))
+    gifname = output_dir + 'Movie.gif'
+    duration = int(1000/framerate)
+    frames[0].save(gifname, format='GIF',append_images=frames[1:],save_all=True,duration=duration, loop=1)
 
 
 
