@@ -1,5 +1,5 @@
 # ColdAsIce: Team ℏ
-## Team Members:
+## Authors
 Tanmay Bhore, Siddharth Chaini, Siddharth Bachoti, Vipin Khade, Vinay Patil
 
 IISER Bhopal
