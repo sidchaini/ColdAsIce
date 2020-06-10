@@ -23,4 +23,6 @@ https://github.com/AKnightWing/ColdAsIce
 ## Authors
 Tanmay Bhore, Siddharth Chaini, Siddharth Bachoti, Vipin Khade, Vinay Patil
 
+This project is part of a submission for the course PHY 312: Numerical Methods, IISER Bhopal, Fall 2020.
+
 IISER Bhopal
