@@ -22,9 +22,14 @@ https://github.com/AKnightWing/ColdAsIce
 
 ## Authors
 Tanmay Bhore
+
 Siddharth Chaini
+
 Siddharth Bachoti
+
 Vipin Khade
+
 Vinay Patil
+
 
 IISER Bhopal
