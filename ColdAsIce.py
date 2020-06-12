@@ -257,11 +257,11 @@ def long_loop(arr2, verbose=False):
 
         if prev_choice =="right":
             forbidden_choice="left"
-        if prev_choice =="up":
+        elif prev_choice =="up":
             forbidden_choice="down"
-        if prev_choice =="left":
+        elif prev_choice =="left":
             forbidden_choice="right"
-        if prev_choice =="down":
+        elif prev_choice =="down":
             forbidden_choice="up"
         else:
             forbidden_choice=None
@@ -301,6 +301,94 @@ def long_loop(arr2, verbose=False):
 
 
     return arr
+
+def short_loop(arr2, verbose=False):
+    '''
+    Implementation of the short loop algorithm
+    '''
+    arr = copy.deepcopy(arr2)
+    N=len(arr)
+    iters=0
+    
+    n1 = np.random.randint(low=0, high=N)
+    n2 = np.random.randint(low=0, high=N)
+    inital_pts =[]
+    prev_choice=None
+    forbidden_choice = "None"
+    while True:
+        iters+=1
+        if iters !=1 and (n1,n2) in inital_pts:
+            idx=inital_pts.index((n1,n2))
+            reset_pts=inital_pts[:idx]
+            for thispt in reset_pts:
+                arr[thispt[0]][thispt[1]][0]=arr2[thispt[0]][thispt[1]][0]
+                arr[thispt[0]][thispt[1]][1]=arr2[thispt[0]][thispt[1]][1]
+            if verbose:
+                print(f"Completed in {iters} iterations.")
+            break
+        
+        current_up_state = arr[n1][n2][0]
+        current_right_state = arr[n1][n2][1]
+
+        lower_neighbour_up_state = arr[(n1+1)%N][n2][0]
+        left_neighbour_right_state = arr[n1][n2-1][1]
+
+        current_down_state = -(lower_neighbour_up_state)    
+        current_left_state = -(left_neighbour_right_state)
+
+        current_states_dict = {"up":current_up_state,"right":current_right_state,"down":current_down_state,"left":current_left_state}
+        outgoing_state_dict={}
+        incoming_state_dict={}
+
+        for key in current_states_dict.keys():
+            if current_states_dict[key]==1:  #current state is outgoing
+                outgoing_state_dict[key]=current_states_dict[key]
+            else:
+                incoming_state_dict[key]=current_states_dict[key]
+        if prev_choice =="right":
+            forbidden_choice="left"
+        elif prev_choice =="up":
+            forbidden_choice="down"
+        elif prev_choice =="left":
+            forbidden_choice="right"
+        elif prev_choice =="down":
+            forbidden_choice="up"
+        else:
+            forbidden_choice=None
+        while True:
+            out_choice = np.random.choice(list(outgoing_state_dict.keys()))
+            if out_choice !=forbidden_choice:
+                break
+        prev_choice=out_choice
+        
+        inital_pts.append((n1,n2))     #append old n1,n2
+        
+        if out_choice == "up":
+            arr[n1][n2][0]= - (arr[n1][n2][0])
+            n1=(n1-1)%N
+            n2=n2
+            continue
+
+        if out_choice == "right":
+            arr[n1][n2][1]= - (arr[n1][n2][1])
+            n1=n1
+            n2=(n2+1)%N
+            continue
+
+        if out_choice == "down":
+            arr[(n1+1)%N][n2][0]= - (arr[(n1+1)%N][n2][0])
+            n1=(n1+1)%N
+            n2=n2
+            continue
+
+        if out_choice == "left":
+            arr[n1][(n2-1)%N][1]= - (arr[n1][(n2-1)%N][1])
+            n1=n1
+            n2=(n2-1)%N
+            continue
+        
+    return arr
+
 
 def count_states(num,error_threshold,return_dict = False,verbose=False):
     '''
@@ -798,8 +886,28 @@ def metropolis_move(arr,temp,verbose = False):
             arr = new
     return arr
 
+def calculate_vector_polarization(arr):
+    '''
+    A function to calculate the polarization vector for a given state array.
+    '''
+    N = len(arr)**2
+    vert = arr[:,:,0].sum()
+    hor = arr[:,:,-1].sum()
+    polarization= ((1/((2**0.5)*N))*hor,(1/((2**0.5)*N))*vert)
+    return polarization[0],polarization[1]
+
 def calculate_polarization(arr):
     '''
+    A function to calculate the polarization value for a given state array.
+    '''
+    polarization=calculate_vector_polarization(arr)
+    polval = np.sqrt(polarization[0]**2 + polarization[1]**2)
+    return polval
+
+
+def calculate_old_polarization(arr):
+    '''
+    DEPRECATED: 12th June 2020
     A function to calculate the polarization for a given state array.
     '''
     vert = 0
