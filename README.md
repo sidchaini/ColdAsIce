@@ -5,7 +5,7 @@ In this text, we develop implement a Monte Carlo algorithm to study thermodynami
 This project is part of a submission for the course PHY 312: Numerical Methods, IISER Bhopal, Fall 2020.
 
 ## Project Report
-<Insert Link>
+![Link](https://github.com/AKnightWing/ColdAsIce/blob/master/Thermodynamic%20Properties%20of%20Ice_A%20Monte%20Carlo%20Study.pdf)
 
 ### Long Loop Algorithm Demonstration
 ![Long loop gif](/media/slower_long_loop.gif)
